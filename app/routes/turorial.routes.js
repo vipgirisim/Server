@@ -1,4 +1,19 @@
+<<<<<<< HEAD
 module.exports = app => {
+=======
+  
+   const cors = require("cors");
+   var router = require("express").Router();
+
+  var corsOptions = {
+    origin: 'https://vipfal.herokuapp.com/admin/',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
+
+module.exports = app => {
+ 
+  router.use(cors(corsOptions))
+>>>>>>> 104a7de2929e3f85ac6fbf194ded24c6e806e1db
   const tutorials = require("../controllers/tutorial.controller.js");
 
   var router = require("express").Router();
