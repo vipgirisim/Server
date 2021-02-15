@@ -7,6 +7,7 @@ const app = express();
  
  app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
+  res.header('x-access-token, Origin, Content-Type, Accept', '*');
   next();
 });
 

@@ -2,10 +2,9 @@ const tutorials = require("../controllers/tutorial.controller.js");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
-     res.header('Access-Control-Allow-Origin', '*');
-  next();
-  });
- 
+     res.header('Access-Control-Allow-Origin', 'https://vipfalfrontent.herokuapp.com/');
+     res.header('x-access-token, Origin, Content-Type, Accept', '*');
+
 
   var router = require("express").Router();
 
@@ -31,4 +30,7 @@ module.exports = function(app) {
   router.delete("/", tutorials.deleteAll);
 
   app.use("/api/tutorials", router);
-};
+
+  next();
+  })
+  ;};
