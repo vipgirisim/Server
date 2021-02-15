@@ -33,7 +33,7 @@ module.exports = app => {
     // Create a new Tutorial
     router.delete("/", tutorials.deleteAll);
 
-    app.use("/admin/tutorials", router);
+    router.use("/admin/tutorials", router);
     next();
   });
 };
