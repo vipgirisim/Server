@@ -1,5 +1,3 @@
 module.exports = {
-  HOST: "mongodb+srv://vipfal:arYDbq29PRrYeX4K@cluster0.s2k8p.mongodb.net",
- // PORT: 27017,
-  DB: "vipfal_DB"
+  url: "mongodb://localhost:27017/bezkoder_db"
 };

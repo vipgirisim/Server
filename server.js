@@ -4,6 +4,12 @@ const cors = require("cors");
  const mongoose = require('mongoose');
 
 const app = express();
+
+  var corsOptions = {
+  origin: "http://vipfal.herokuapp.com/"
+};
+
+app.use(cors(corsOptions));  
  
  app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -41,7 +47,9 @@ mongoose
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
-require("./app/routes/burclar.routes")(app);
+require("./app/routes/turorial.routes")(app);
+
+//require("./app/routes/burclar.routes")(app);
 
 
 // set port, listen for requests
