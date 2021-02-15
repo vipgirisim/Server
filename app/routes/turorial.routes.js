@@ -1,13 +1,17 @@
-const tutorials = require("../controllers/tutorial.controller.js");
-
-module.exports = function(app) {
-  app.use(function(req, res, next) {
-     res.header('Access-Control-Allow-Origin', 'https://vipfalfrontent.herokuapp.com/');
-     res.header('x-access-token, Origin, Content-Type, Accept', '*');
+const cors = require("cors");
+var router = require("express").Router();
 
 
-  var router = require("express").Router();
+var corsOptions = {
+  origin: 'https://vipfal.herokuapp.com/',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
+module.exports = app => {
+  router.use(cors(corsOptions))
+  const tutorials = require("../controllers/tutorial.controller.js");
+
+ 
   // Create a new Tutorial
   router.post("/", tutorials.create);
 
@@ -30,7 +34,4 @@ module.exports = function(app) {
   router.delete("/", tutorials.deleteAll);
 
   app.use("/api/tutorials", router);
-
-  next();
-  })
-  ;};
+};
