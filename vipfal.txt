@@ -1,1 +1,6 @@
 mongodb+srv://murattuncil:mtutku987@cluster0.kv4wo.mongodb.net/Vidyovi_DB?retryWrites=true&w=majority
+
+
+
+db.user = require("./user.model");
+db.role = require("./role.model");
