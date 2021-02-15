@@ -1,5 +1,11 @@
-module.exports = app => {
-  const tutorials = require("../controllers/tutorial.controller.js");
+const tutorials = require("../controllers/tutorial.controller.js");
+
+module.exports = function(app) {
+  app.use(function(req, res, next) {
+     res.header('Access-Control-Allow-Origin', '*');
+  next();
+  });
+ 
 
   var router = require("express").Router();
 
