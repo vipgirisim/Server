@@ -4,11 +4,12 @@ const cors = require("cors");
  const mongoose = require('mongoose');
 
 const app = express();
- 
- app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+
+var corsOptions = {
+  origin: "https://vipfal.herokuapp.com"
+};
+
+app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -16,9 +17,9 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require("./app/models");
+const db = require("../src/app/models");
 const Role = db.role;
- 
+
 mongoose
   .connect("mongodb+srv://vipfal:arYDbq29PRrYeX4K@cluster0.s2k8p.mongodb.net/vipfal_DB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
@@ -33,13 +34,17 @@ mongoose
     process.exit();
   });
 
-  app.get("/", (req, res) => {
+// simple route 
+app.get("/", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://vipfal.herokuapp.com"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  
   res.json({ message: "VipFal Server Aktif" });
-}); 
+});
 
 // routes
-require("./app/routes/auth.routes")(app);
-require("./app/routes/user.routes")(app);
+require("../src/app/models/role.model")(app);
+require("../src/app/routes/user.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
