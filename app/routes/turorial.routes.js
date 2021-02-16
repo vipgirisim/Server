@@ -23,10 +23,6 @@ module.exports = app => {
 
   // Create a new Tutorial
   router.delete("/", tutorials.deleteAll);
-  router.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-  });
-  app.use("/admin/tutorials", router);
 
+  app.use("/api/tutorials", router);
 };
