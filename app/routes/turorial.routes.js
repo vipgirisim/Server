@@ -3,6 +3,16 @@ module.exports = app => {
 
   var router = require("express").Router();
 
+  app.use(function(req, res, next) {
+    router.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+  });
+
+
+
   // Create a new Tutorial
   router.post("/", tutorials.create);
 

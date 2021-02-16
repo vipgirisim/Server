@@ -6,7 +6,10 @@ const cors = require("cors");
 const app = express();
  
  app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-access-token, Origin, Content-Type, Accept"
+  );
   next();
 });
 
@@ -40,9 +43,11 @@ mongoose
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/turorial.routes")(app);
+
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const server=app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
