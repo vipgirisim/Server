@@ -1,5 +1,5 @@
 const db = require("../models");
-const Burclar = db.burclars;
+const Burclar = db.burclar;
 
  exports.create = (req, res) => {
    if (!req.body.burcadi) {
