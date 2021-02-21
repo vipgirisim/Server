@@ -4,7 +4,7 @@ const Burclar = db.burclar;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.burcadi) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
@@ -33,7 +33,7 @@ exports.create = (req, res) => {
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
   const burcadi = req.query.burcadi;
-  var condition = burcadi ? { burcadi: { $regex: new RegExp(title), $options: "i" } } : {};
+  var condition = burcadi ? { burcadi: { $regex: new RegExp(burcadi), $options: "i" } } : {};
 
   Burclar.find(condition)
     .then(data => {
