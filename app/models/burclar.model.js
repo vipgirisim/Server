@@ -3,7 +3,7 @@ module.exports = mongoose => {
     {
       burcadi: String,
       burclinki: String,
-      burcresimyolu: String,
+    //  burcresimyolu: String,
 
      },
     { timestamps: true }
