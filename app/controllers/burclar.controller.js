@@ -1,23 +1,19 @@
 const db = require("../models");
-const Burclar = db.burclar;
+const Burclar = db.burclars;
 
-// Create and Save a new burclar
-exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.burcadi) {
+ exports.create = (req, res) => {
+   if (!req.body.burcadi) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
-  // Create a burclar
-  const burclar = new Burclar({
+   const burclar = new Burclar({
     burcadi: req.body.burcadi,
     burclinki: req.body.burclinki,
    });
 
-  // Save burclar in the database
-  burclar
-    .save(burcadi)
+   burclar
+    .save(burclar)
     .then(data => {
       res.send(data);
     })
@@ -29,8 +25,7 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all burclar from the database.
-exports.findAll = (req, res) => {
+ exports.findAll = (req, res) => {
   const burcadi = req.query.burcadi;
   var condition = burcadi ? { burcadi: { $regex: new RegExp(burcadi), $options: "i" } } : {};
 
@@ -46,8 +41,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single burclar with an id
-exports.findOne = (req, res) => {
+ exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Burclar.findById(id)
