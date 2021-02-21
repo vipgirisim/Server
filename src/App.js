@@ -2,11 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
  const mongoose = require('mongoose');
-
+//https://vipfal.herokuapp.com/
 const app = express();
 
 var corsOptions = {
-  origin: "https://vipfal.herokuapp.com"
+  origin: "https://vipfal.herokuapp.com/"
 };
 
 app.use(cors(corsOptions));
@@ -36,7 +36,7 @@ mongoose
 
 // simple route 
 app.get("/", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://vipfal.herokuapp.com"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "https://vipfal.herokuapp.com/"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   
   res.json({ message: "VipFal Server Aktif" });
