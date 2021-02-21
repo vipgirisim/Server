@@ -13,8 +13,7 @@ exports.create = (req, res) => {
   const burclar = new Burclar({
     burcadi: req.body.burcadi,
     burclinki: req.body.burclinki,
-   // published: req.body.published ? req.body.published : false
-  });
+   });
 
   // Save burclar in the database
   burclar
