@@ -9,7 +9,7 @@ db.url = dbConfig.url;
 
 db.user = require("./user.model");
 db.role = require("./role.model");
-db.burclar = require("./burclar.model")(mongoose);
+db.burclar = require("./burclar.model.js")(mongoose);
 db.tutorials = require("./tutorial.model.js")(mongoose);
 
 module.exports = db;
