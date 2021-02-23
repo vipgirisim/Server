@@ -34,11 +34,16 @@ mongoose
     process.exit();
   });
 
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    next();
+  });
+  
+
 // simple route 
 app.get("/", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://vipfal.herokuapp.com/"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  
   res.json({ message: "VipFal Server Aktif" });
 });
 
