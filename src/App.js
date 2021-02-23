@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
- const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 //https://vipfal.herokuapp.com/
 const app = express();
 
@@ -34,13 +34,17 @@ mongoose
     process.exit();
   });
 
-  app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  if (req.method === 'OPTIONS') {
+    res.send(200);
+  } else {
     next();
-  });
-  
+  }
+});
+
 
 // simple route 
 app.get("/", (req, res) => {
@@ -53,7 +57,7 @@ require("../src/app/routes/user.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
-const server=app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
@@ -107,6 +111,6 @@ function initial() {
 
     }
 
-    
+
   });
 }
