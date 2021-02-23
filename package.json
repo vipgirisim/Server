@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "private": true,
+  "proxy": {
+    "*":{ "target" : "http://lvipfal.herokuapp.com:8081"}
+ } ,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "vipfalweb": "npm start --prefix vipfalweb",

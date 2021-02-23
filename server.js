@@ -1,12 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
- const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const app = express();
+
  
- app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Headers","origin, content-type, accept, authorization");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD"); 
   next();
 });
 
@@ -18,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
 const Role = db.role;
- 
+
 mongoose
   .connect("mongodb+srv://vipfal:arYDbq29PRrYeX4K@cluster0.s2k8p.mongodb.net/vipfal_DB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
@@ -33,9 +38,9 @@ mongoose
     process.exit();
   });
 
-  app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "VipFal Server Aktif" });
-}); 
+});
 
 // routes
 require("./app/routes/auth.routes")(app);
@@ -46,7 +51,7 @@ require("./app/routes/indirim.routers")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-const server=app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
@@ -100,6 +105,6 @@ function initial() {
 
     }
 
-    
+
   });
 }

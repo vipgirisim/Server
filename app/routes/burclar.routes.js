@@ -15,7 +15,7 @@ module.exports = app => {
   router.get("/:id", burclar.findOne);
 
   // Update a Tutorial with id
-  router.put("/:id", burclar.update);
+  router.post("/:id", burclar.update);
 
   // Delete a Tutorial with id
   router.delete("/:id", burclar.delete);
