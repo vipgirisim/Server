@@ -18,9 +18,9 @@ const Indirim = db.indirims;
    const indirim = new Indirim({ 
     indirimkodu:req.body.indirimkodu,
     kackisikullansin: req.body.kackisikullansin,
-    yuzdeorani:req.body.yuzdeorani,
+    /* yuzdeorani:req.body.yuzdeorani,
     baslangicTarihi:req.body.baslangicTarihi,
-    BitisTarihi:req.body.BitisTarihi,
+    BitisTarihi:req.body.BitisTarihi, */
 
    });
 

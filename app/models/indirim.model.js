@@ -3,9 +3,9 @@ module.exports = mongoose => {
       {
         indirimkodu: String,
         kackisikullansin: String,
-        yuzdeorani: String,
+        /* yuzdeorani: String,
         baslangicTarihi: String,
-        BitisTarihi: String,
+        BitisTarihi: String, */
 
   
        },
