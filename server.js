@@ -3,10 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require('mongoose');
 
-const app = express();
-
- 
-
+const app = express(); 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers","*");
@@ -14,10 +11,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// parse requests of content-type - application/json
-app.use(bodyParser.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
+ app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
