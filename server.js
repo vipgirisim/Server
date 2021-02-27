@@ -45,9 +45,8 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/burclar.routes")(app);
 require("./app/routes/indirim.routers")(app);
-/* require('./app/routes/file-upload-routes')(app);
- 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); */
+require('./app/routes/file-upload-routes')(app);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
