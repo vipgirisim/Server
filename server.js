@@ -47,6 +47,7 @@ require("./app/routes/burclar.routes")(app);
 require("./app/routes/indirim.routers")(app);
 require('./app/routes/file-upload-routes')(app);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(cors());
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
