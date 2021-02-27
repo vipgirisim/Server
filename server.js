@@ -20,7 +20,9 @@ const Role = db.role;
 mongoose
   .connect("mongodb+srv://vipfal:arYDbq29PRrYeX4K@cluster0.s2k8p.mongodb.net/vipfal_DB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
   })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
