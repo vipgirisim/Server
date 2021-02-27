@@ -1,15 +1,18 @@
-var router = require("express").Router();
+'use strict';
+
+const express = require('express');
 const {upload} = require('../../helpers/filehelper');
 const {singleFileUpload, multipleFileUpload,
      getallSingleFiles, getallMultipleFiles} = require('../controllers/fileuploaderController');
- 
-
-router.post('/singleFile', upload.single('file'), singleFileUpload);
-router.post('/multipleFiles', upload.array('files'), multipleFileUpload);
-router.get('/getSingleFiles', getallSingleFiles);
-router.get('/getMultipleFiles', getallMultipleFiles);
+const router = express.Router();
 
 
-module.exports = app => {
-    app.use("/admin/uploads", router);
+router.post('/admin/singleFile', upload.single('file'), singleFileUpload);
+router.post('/admin/multipleFiles', upload.array('files'), multipleFileUpload);
+router.get('/admin/getSingleFiles', getallSingleFiles);
+router.get('/admin/getMultipleFiles', getallMultipleFiles);
+
+
+module.exports = {
+    routes: router
 }
