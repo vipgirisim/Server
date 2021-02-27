@@ -13,6 +13,7 @@ app.use((req, res, next) => {
 
  app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const db = require("./app/models");
 const Role = db.role;
@@ -43,6 +44,8 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/burclar.routes")(app);
 require("./app/routes/indirim.routers")(app);
+require('./app/routes/file-upload-routes')(app);
+ 
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

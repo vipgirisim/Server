@@ -1,6 +1,6 @@
 'use strict';
 
-const express = require('express');
+var router = require("express").Router();
 const {upload} = require('../helpers/filehelper');
 const {singleFileUpload, multipleFileUpload,
      getallSingleFiles, getallMultipleFiles} = require('../controllers/fileuploaderController');
@@ -13,6 +13,6 @@ router.get('/getSingleFiles', getallSingleFiles);
 router.get('/getMultipleFiles', getallMultipleFiles);
 
 
-module.exports = {
-    routes: router
+module.exports = app => {
+    app.use("/admin/uploads", router);
 }
