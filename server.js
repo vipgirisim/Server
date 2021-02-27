@@ -10,15 +10,9 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers","*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD"); 
+  
   next();
-});
-
- app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({ extended: true }));
-
-const db = require("./app/models");
-const Role = db.role;
-
+}); 
 mongoose
   .connect("mongodb+srv://vipfal:arYDbq29PRrYeX4K@cluster0.s2k8p.mongodb.net/vipfal_DB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
@@ -39,7 +33,11 @@ app.get("/", (req, res) => {
   res.json({ message: "VipFal Server Aktif" });
 });
 
-// routes
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = require("./app/models");
+const Role = db.role;
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/turorial.routes")(app);
