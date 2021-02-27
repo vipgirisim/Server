@@ -45,7 +45,7 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/burclar.routes")(app);
 require("./app/routes/indirim.routers")(app);
-require('./app/routes/file-upload-routes')(app);
+require('./app/routes/file-upload-routes');
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors());
 
