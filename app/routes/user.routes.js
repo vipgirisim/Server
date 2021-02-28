@@ -35,13 +35,63 @@ module.exports = function(app) {
     .catch( err => res.status(400).json('Error: ' + err) );
 });
 
+
+
+
 app.route('/api/usergetir/:id').get( (req, res) => {
   User.findById(req.params.id)
   .then(users => res.json(
 
-    users.roles
+    users.username
     
     ))
   .catch( err => res.status(400).json('Error: ' + err) );
 });
+
+app.route('/api/adminrolesgetir').get( (req, res) => {
+
+  User.find({roles:"60298f789540180016ee791c"})
+  .then(users => res.json(
+
+   users
+    
+    ))
+  .catch( err => res.status(400).json('Error: ' + err) );
+});
+
+app.route('/api/userrolesgetir').get( (req, res) => {
+
+  User.find({roles:"60298f789540180016ee791a"})
+  .then(users => res.json(
+
+   users
+    
+    ))
+  .catch( err => res.status(400).json('Error: ' + err) );
+});
+
+app.route('/api/modrolesgetir').get( (req, res) => {
+
+  User.find({roles:"60298f789540180016ee791b"})
+  .then(users => res.json(
+
+   users
+    
+    ))
+  .catch( err => res.status(400).json('Error: ' + err) );
+});
+
+app.route('/api/modrolesgetir').get( (req, res) => {
+
+  User.find({roles:"60298f789540180016ee791d"})
+  .then(users => res.json(
+
+   users
+    
+    ))
+  .catch( err => res.status(400).json('Error: ' + err) );
+});
+
+
+
 };
