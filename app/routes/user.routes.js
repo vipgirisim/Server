@@ -1,6 +1,7 @@
 const { authJwt } = require("../middlewares");
 const controller = require("../controllers/user.controller");
 let User = require('../models/user.model');
+var bcrypt = require("bcryptjs");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -49,40 +50,42 @@ app.route('/api/usergetir/:id').get( (req, res) => {
 });
 
 
-app.post('/api/userekle', function (req, res) {
+app.post('/api/admin/userekle', function (req, res) {
 
-  let user = new User();
-  user.username= req.body.username;
-  user.email= req.body.email;
-  user.password= req.body.
-  user.iban= req.body.iban;
-  user.cuzdan= req.body.cuzdan;
-  user.falbilgisi= req.body.falbilgisi;
-  user.indirimkodu= req.body.indirimkodu;
-  user.resimyolu= req.body.resimyolu;
-  user.profilyazisi= req.body.profilyazisi;
-  user.yorumlar= req.body.yorumlar;
-  user.yorumsayisi= req.body.yorumsayisi;
-  user.yediYirmidort= req.body.yediYirmidort;
-  user.baktigiFalid= req.body.baktigiFalid;
-  user.baktigiFalAdi= req.body.baktigiFalAdi;
-  user.baktigiFalUcreti= req.body.baktigiFalUcreti;
-  user.kazandigiKar= req.body.kazandigiKar;
-  user.adminFalciyaYorumlari=req.body.adminFalciyaYorumlari;
-  user.yaziliFalFiyat=req.body.yaziliFalFiyat;
-  user.canlifalFiyati=req.body.canlifalFiyati;
-  user.FalciRutbesi=req.body.FalciRutbesi;
-  user.KahveFaliSayisi=req.body.KahveFaliSayisi;
+  let user = new User({
+    username:req.body.username,
+    email:req.body.email,
+    password: bcrypt.hashSync(req.body.password, 8),
+    iban: req.body.iban,
+    cuzdan: req.body.cuzdan,
+    falbilgisi: req.body.falbilgisi,
+    indirimkodu: req.body.indirimkodu,
+    resimyolu: req.body.resimyolu,
+    profilyazisi: req.body.profilyazisi,
+    yorumlar: req.body.yorumlar,
+    yorumsayisi: req.body.yorumsayisi,
+    yediYirmidort: req.body.yediYirmidort,
+    baktigiFalid: req.body.baktigiFalid,
+    baktigiFalAdi: req.body.baktigiFalAdi,
+    baktigiFalUcreti: req.body.baktigiFalUcreti,
+    kazandigiKar: req.body.kazandigiKar,
+    adminFalciyaYorumlari:req.body.adminFalciyaYorumlari,
+    yaziliFalFiyat:req.body.yaziliFalFiyat,
+    canlifalFiyati:req.body.canlifalFiyati,
+    FalciRutbesi:req.body.FalciRutbesi,
+    KahveFaliSayisi:req.body.KahveFaliSayisi
+  });
+
 
   user.save(function(err){
-      if(err){
-          console.log(err);
-          res.json({msg: "failed"})
-      }
-      else{
-          res.json(user)
-      }
-  });
+    if(err){
+        console.log(err);
+        res.json({msg: "failed"})
+    }
+    else{
+        res.json(user)
+    }
+});
 });
 
 
