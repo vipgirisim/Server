@@ -29,13 +29,19 @@ module.exports = function(app) {
     controller.FalciBoard
   );
 
-  app.route('/api/usergetir/:id').get( (req, res) => {
-    User.findById(req.params.id)
-    .then(users => res.json(
-      
-      users.roles
-      
-      ))
+  app.route('/api/tumusergetir').get( (req, res) => {
+    User.find()
+    .then(users => res.json(users))
     .catch( err => res.status(400).json('Error: ' + err) );
+});
+
+app.route('/api/usergetir/:id').get( (req, res) => {
+  User.findById(req.params.id)
+  .then(users => res.json(
+
+    users.roles
+    
+    ))
+  .catch( err => res.status(400).json('Error: ' + err) );
 });
 };
