@@ -81,7 +81,7 @@ app.route('/api/modrolesgetir').get( (req, res) => {
   .catch( err => res.status(400).json('Error: ' + err) );
 });
 
-app.route('/api/modrolesgetir').get( (req, res) => {
+app.route('/api/falcirolesgetir').get( (req, res) => {
 
   User.find({roles:"60298f789540180016ee791d"})
   .then(users => res.json(
@@ -91,6 +91,8 @@ app.route('/api/modrolesgetir').get( (req, res) => {
     ))
   .catch( err => res.status(400).json('Error: ' + err) );
 });
+
+ 
 
 
 
