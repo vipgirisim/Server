@@ -1,3 +1,7 @@
+
+const Users = require("../controllers/user.controller");
+
+
 exports.allAccess = (req, res) => {
   res.status(200).send("Public Content.");
 };
@@ -15,4 +19,7 @@ exports.moderatorBoard = (req, res) => {
 };
 exports.FalciBoard = (req, res) => {
   res.status(200).send("Falci Content.");
+
+
+ 
 };
