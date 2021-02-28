@@ -48,6 +48,46 @@ app.route('/api/usergetir/:id').get( (req, res) => {
   .catch( err => res.status(400).json('Error: ' + err) );
 });
 
+
+app.post('/api/userekle', function (req, res) {
+
+  let user = new User();
+  user.username= req.body.username;
+  user.email= req.body.email;
+  user.password= req.body.
+  user.iban= req.body.iban;
+  user.cuzdan= req.body.cuzdan;
+  user.falbilgisi= req.body.falbilgisi;
+  user.indirimkodu= req.body.indirimkodu;
+  user.resimyolu= req.body.resimyolu;
+  user.profilyazisi= req.body.profilyazisi;
+  user.yorumlar= req.body.yorumlar;
+  user.yorumsayisi= req.body.yorumsayisi;
+  user.yediYirmidort= req.body.yediYirmidort;
+  user.baktigiFalid= req.body.baktigiFalid;
+  user.baktigiFalAdi= req.body.baktigiFalAdi;
+  user.baktigiFalUcreti= req.body.baktigiFalUcreti;
+  user.kazandigiKar= req.body.kazandigiKar;
+  user.adminFalciyaYorumlari=req.body.adminFalciyaYorumlari;
+  user.yaziliFalFiyat=req.body.yaziliFalFiyat;
+  user.canlifalFiyati=req.body.canlifalFiyati;
+  user.FalciRutbesi=req.body.FalciRutbesi;
+  user.KahveFaliSayisi=req.body.KahveFaliSayisi;
+
+  user.save(function(err){
+      if(err){
+          console.log(err);
+          res.json({msg: "failed"})
+      }
+      else{
+          res.json(user)
+      }
+  });
+});
+
+
+
+
 app.route('/api/adminrolesgetir').get( (req, res) => {
 
   User.find({roles:"60298f789540180016ee791c"})
