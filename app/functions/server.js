@@ -1,23 +1,33 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const path = require('path');
+const dbConfig = require("./config/db.config");
+const serverless = require("serverless-http");
 
-const mongoose = require('mongoose');
+const app = express();
 
-const app = express(); 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers","*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD"); 
-  next();
-}); 
-mongoose
-  .connect("mongodb+srv://murattuncil:mtutku987@cluster0.kv4wo.mongodb.net/Vidyovi_DB?retryWrites=true&w=majority", {
+var corsOptions = {
+  origin: "http://vipfalserver.netlify.app"
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+module.exports = app;
+module.exports.handler = serverless(app);
+
+const db = require("./models");
+const Role = db.role;
+
+db.mongoose
+  .connect("mongodb+srv://vipfal:arYDbq29PRrYeX4K@cluster0.s2k8p.mongodb.net/vipfal_DB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: true,
+    useUnifiedTopology: true
   })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
@@ -28,28 +38,18 @@ mongoose
     process.exit();
   });
 
+// simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Server Aktif" });
+  res.json({ message: "Welcome to bezkoder application." });
 });
 
-app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({ extended: true }));
-
-const db = require("./app/models");
-const Role = db.role;
-require("./app/routes/auth.routes")(app);
-require("./app/routes/user.routes")(app);
-require("./app/routes/turorial.routes")(app);
-require("./app/routes/burclar.routes")(app);
-require("./app/routes/indirim.routers")(app);
-const fileRoutes = require('./app/routes/file-upload-routes');
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/admin', fileRoutes.routes);
-app.use(cors());
+// routes
+require("./routes/auth.routes")(app);
+require("./routes/user.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-const server = app.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
@@ -103,6 +103,6 @@ function initial() {
 
     }
 
-
+    
   });
 }
