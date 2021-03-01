@@ -13,7 +13,7 @@ app.use((req, res, next) => {
   next();
 }); 
 mongoose
-  .connect("mongodb+srv://murattuncil:mtutku987@cluster0.kv4wo.mongodb.net/Vidyovi_DB?retryWrites=true&w=majority", {
+  .connect("mongodb+srv://vipfal:arYDbq29PRrYeX4K@cluster0.s2k8p.mongodb.net/vipfal_DB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
