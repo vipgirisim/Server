@@ -52,6 +52,82 @@ app.route('/api/usergetir/:id').get( (req, res) => {
 });
  
 
+app.post('/api/admin/modekle', function (req, res) {
+
+  let user = new User({
+    username:req.body.username,
+    email:req.body.email,
+    password: bcrypt.hashSync(req.body.password, 8),
+    iban: req.body.iban,
+    cuzdan: req.body.cuzdan,
+    falbilgisi: req.body.falbilgisi,
+    indirimkodu: req.body.indirimkodu,
+    resimyolu: req.body.resimyolu,
+    profilyazisi: req.body.profilyazisi,
+    yorumlar: req.body.yorumlar,
+    yorumsayisi: req.body.yorumsayisi,
+    yediYirmidort: req.body.yediYirmidort,
+    baktigiFalid: req.body.baktigiFalid,
+    baktigiFalAdi: req.body.baktigiFalAdi,
+    baktigiFalUcreti: req.body.baktigiFalUcreti,
+    kazandigiKar: req.body.kazandigiKar,
+    adminFalciyaYorumlari:req.body.adminFalciyaYorumlari,
+    yaziliFalFiyat:req.body.yaziliFalFiyat,
+    canlifalFiyati:req.body.canlifalFiyati,
+    FalciRutbesi:req.body.FalciRutbesi,
+    KahveFaliSayisi:req.body.KahveFaliSayisi
+  });
+
+
+  user.save(function(err){
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    if (req.body.roles) {
+      Role.find(
+        {
+          name: { $in: req.body.roles }
+        },
+        (err, roles) => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+          role._id="60298f789540180016ee791b";
+          user.roles = roles.map(role =>role._id);
+          user.save(err => {
+            if (err) {
+              res.status(500).send({ message: err });
+              return;
+            }
+
+            res.send({ message: "User was registered successfully!" });
+          });
+        }
+      );
+    } else {
+      Role.findOne({ name: "user" }, (err, role) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+
+        user.roles = [role._id];
+        user.save(err => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+
+          res.send({ message: "User was registered successfully!" });
+        });
+      });
+    }  
+});
+});
+
 app.post('/api/admin/userekle', function (req, res) {
 
   let user = new User({
