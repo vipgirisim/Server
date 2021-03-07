@@ -6,7 +6,7 @@
   "private": true,
   "proxy": {
     "*": {
-      "target": "http://lvipfal.herokuapp.com:8081"
+      "target": "http://vipfal.herokuapp.com:8081"
     }
   },
   "scripts": {
