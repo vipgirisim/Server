@@ -87,7 +87,7 @@ router.route('/api/userupdate/:id').post((req, res) => {
         user.FalciRutbesi=req.body.FalciRutbesi,
         user.KahveFaliSayisi=req.body.KahveFaliSayisi
 
-        User.save()
+        user.save()
               .then(() => res.json('kullanici updated!'))
               .catch(err => res.status(400).json('Error: ' + err));
       })
@@ -120,7 +120,7 @@ router.route('/api/adminupdate/:id').post((req, res) => {
         user.FalciRutbesi=req.body.FalciRutbesi,
         user.KahveFaliSayisi=req.body.KahveFaliSayisi
 
-        User.save()
+        user.save()
               .then(() => res.json('kullanici updated!'))
               .catch(err => res.status(400).json('Error: ' + err));
       })
@@ -152,7 +152,7 @@ router.route('/api/Falciupdate/:id').post((req, res) => {
         user.FalciRutbesi=req.body.FalciRutbesi,
         user.KahveFaliSayisi=req.body.KahveFaliSayisi
 
-        User.save()
+        user.save()
               .then(() => res.json('falci updated!'))
               .catch(err => res.status(400).json('Error: ' + err));
       })
@@ -184,7 +184,7 @@ router.route('/api/Modupdate/:id').post((req, res) => {
         user.FalciRutbesi=req.body.FalciRutbesi,
         user.KahveFaliSayisi=req.body.KahveFaliSayisi
 
-        User.save()
+        user.save()
               .then(() => res.json('kullanici updated!'))
               .catch(err => res.status(400).json('Error: ' + err));
       })
