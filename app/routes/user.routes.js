@@ -270,7 +270,7 @@ app.post("/api/admin/userekle", function (req, res) {
 app.post("/api/admin/adminekle", function (req, res) {
 
   let user = new User({
-    username: req.body.username,
+     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
     iban: req.body.iban,
@@ -299,7 +299,7 @@ app.post("/api/admin/adminekle", function (req, res) {
       res.status(500).send({ message: err });
       return;
     }
-
+ 
     if (req.body.roles) {
       Role.find(
         {
@@ -339,7 +339,7 @@ app.post("/api/admin/adminekle", function (req, res) {
           res.send({ message: "admin was registered successfully!" });
         });
       });
-    }
+    }  
   });
 });
 
