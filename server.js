@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require('path');
+const fileRoutes = require('./app/routes/file-upload-routes');
 
 const mongoose = require('mongoose');
 
@@ -34,7 +35,7 @@ app.get("/", (req, res) => {
 
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors());
 const db = require("./app/models");
 const Role = db.role;
 require("./app/routes/auth.routes")(app);
@@ -42,10 +43,11 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/burclar.routes")(app);
 require("./app/routes/indirim.routers")(app);
-const fileRoutes = require('./app/routes/file-upload-routes');
+ 
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/admin', fileRoutes.routes);
-app.use(cors());
+app.use('/yukleme',fileRoutes.routes);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
