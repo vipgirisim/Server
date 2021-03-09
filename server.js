@@ -46,7 +46,7 @@ require("./app/routes/indirim.routers")(app);
  
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/yukleme',fileRoutes.routes);
+app.use('/admin',fileRoutes.routes);
 
 
 // set port, listen for requests
