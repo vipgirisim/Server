@@ -165,12 +165,12 @@ app.post("/api/admin/modekle", function (req, res) {
               return;
             }
 
-            res.send({ message: "admin was registered successfully!" });
+            res.send({ message: "mod was registered successfully!" });
           });
         }
       );
     } else {
-      Role.findOne({ name: "user" }, (err, role) => {
+      Role.findOne({ name: "moderator" }, (err, role) => {
         if (err) {
           res.status(500).send({ message: err });
           return;
@@ -183,7 +183,7 @@ app.post("/api/admin/modekle", function (req, res) {
             return;
           }
 
-          res.send({ message: "admin was registered successfully!" });
+          res.send({ message: "mod was registered successfully!" });
         });
       });
     }
@@ -241,7 +241,7 @@ app.post("/api/admin/userekle", function (req, res) {
               return;
             }
 
-            res.send({ message: "User was registered successfully!" });
+            res.send({ message: "Usera was registered successfully!" });
           });
         }
       );
@@ -259,7 +259,7 @@ app.post("/api/admin/userekle", function (req, res) {
             return;
           }
 
-          res.send({ message: "User was registered successfully!" });
+          res.send({ message: "Usera was registered successfully!" });
         });
       });
     }
@@ -323,7 +323,7 @@ app.post("/api/admin/adminekle", function (req, res) {
         }
       );
     } else {
-      Role.findOne({ name: "user" }, (err, role) => {
+      Role.findOne({ name: "admin" }, (err, role) => {
         if (err) {
           res.status(500).send({ message: err });
           return;
@@ -399,7 +399,7 @@ app.post("/api/admin/falciekle", function (req, res) {
         }
       );
     } else {
-      Role.findOne({ name: "user" }, (err, role) => {
+      Role.findOne({ name: "falci" }, (err, role) => {
         if (err) {
           res.status(500).send({ message: err });
           return;
