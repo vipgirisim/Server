@@ -1,7 +1,6 @@
 const { authJwt } = require("../middlewares");
 const controller = require("../controllers/user.controller");
-//let User = require("../models/user.model");
-var bcrypt = require("bcryptjs");
+ var bcrypt = require("bcryptjs");
 var router = require("express").Router();
 const db = require("../models");
 const User = db.user;
@@ -348,7 +347,7 @@ app.post("/api/admin/falciekle", function (req, res) {
   let user = new User({
     username: req.body.username,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8),
+    password:bcrypt.hashSync(req.body.password, 8),
     iban: req.body.iban,
     cuzdan: req.body.cuzdan,
     falbilgisi: req.body.falbilgisi,

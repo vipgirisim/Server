@@ -25,7 +25,7 @@ exports.FalciBoard = (req, res) => {
  
 };
 
-
+ /*
 exports.create = (req, res) => {
   if (!req.body.username) {
    res.status(400).send({ message: "Content can not be empty!" });
@@ -71,7 +71,7 @@ exports.create = (req, res) => {
         });
       });
   };
- /*
+
 exports.findAll = (req, res) => {
  const burcadi = req.query.burcadi;
  var condition = burcadi ? { burcadi: { $regex: new RegExp(burcadi), $options: "i" } } : {};
