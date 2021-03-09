@@ -1,7 +1,7 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'https://vipfal.herokuapp.com/api/test/';
+const API_URL = 'http://www.madilink.net:8000/api/test/';
 
 class UserService {
   
@@ -9,7 +9,7 @@ class UserService {
     const axios = require('axios');
     let config = {
       method: 'get',
-      url: 'https://vipfal.herokuapp.com/api/test/all',
+      url: 'http://www.madilink.net:8000/api/test/all',
       headers: {}
     }; 
     return axios(config);

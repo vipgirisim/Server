@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://vipfal.herokuapp.com/api/auth/";
+const API_URL = "http://www.madilink.net:8000/api/auth/";
 
 class AuthService {
   login(username, password) {

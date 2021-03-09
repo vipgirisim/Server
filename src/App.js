@@ -2,11 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require('mongoose');
-//https://vipfal.herokuapp.com/
+//http://www.madilink.net:8000/
 const app = express();
 
 var corsOptions = {
-  origin: "https://vipfal.herokuapp.com/"
+  origin: "http://www.madilink.net:8000/"
 };
 
 app.use(cors(corsOptions));

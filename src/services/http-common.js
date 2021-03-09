@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://vipfal.herokuapp.com/admin/",
+  baseURL: "http://www.madilink.net:8000/admin/",
   headers: { }
 });
