@@ -23,5 +23,5 @@ module.exports = app => {
   // Create a new Tutorial
   router.delete("/", burclar.deleteAll);
 
-   app.use("/*admin/burclar", router);
+   app.use("/admin/burclar", router);
 };

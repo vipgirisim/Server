@@ -29,5 +29,5 @@ module.exports = app => {
 
   
 
-   app.use("/*admin/tutorials", router);
+   app.use("/admin/tutorials", router);
 };

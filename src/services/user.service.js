@@ -26,6 +26,16 @@ class UserService {
   getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
+  getfalciBoard() {
+    return axios.get(API_URL + 'falci', { headers: authHeader() });
+  }
+
+  getYfalciBoard() {
+    return axios.get(API_URL + 'falci', { headers: authHeader() });
+  }
+  getHfalciBoard() {
+    return axios.get(API_URL + 'falci', { headers: authHeader() });
+  }
 }
 
 export default new UserService();

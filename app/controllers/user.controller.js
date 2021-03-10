@@ -18,11 +18,15 @@ exports.adminBoard = (req, res) => {
 exports.moderatorBoard = (req, res) => {
   res.status(200).send("Moderator Content.");
 };
+
 exports.FalciBoard = (req, res) => {
   res.status(200).send("Falci Content.");
-
-
- 
+};
+  exports.YFalciBoard = (req, res) => {
+    res.status(200).send("Yönetici Falci Content.");
+  };
+    exports.HFalciBoard = (req, res) => {
+      res.status(200).send("Havuz Falci Content.");
 };
 
  /*

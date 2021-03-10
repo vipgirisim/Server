@@ -36,6 +36,19 @@ module.exports = function (app) {
     controller.FalciBoard
   );
 
+  app.get(
+    "/api/test/yoneticifalci",
+    [authJwt.verifyToken, authJwt.ishyfalcisi],
+    controller.YFalciBoard
+  );
+
+
+  app.get(
+    "/api/test/Havuzfalcisi",
+    [authJwt.verifyToken, authJwt.isFalci],
+    controller.HFalciBoard
+  );
+
   app.route("/api/tumusergetir").get((req, res) => {
     User.find()
       .then(users => res.json(users))

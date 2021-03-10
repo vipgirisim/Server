@@ -101,10 +101,28 @@ function initial() {
       });
 
 
+      new Role({
+        name: "havuzfalcisi"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'havuzfalcisi' to roles collection");
+      });
 
 
-    }
+      new Role({
+        name: "yoneticifalci"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
 
+        console.log("added 'yoneticifalci' to roles collection");
+      }); 
+
+    } 
 
   });
 }

@@ -23,5 +23,5 @@ module.exports = app => {
   // Create a new Tutorial
   router.delete("/", discounts.deleteAll);
 
-   app.use("/*admin/discounts", router);
+   app.use("/admin/discounts", router);
 };
