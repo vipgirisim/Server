@@ -12,8 +12,7 @@ db.role = require("./role.model");
 db.burclar = require("./burclar.model.js")(mongoose);
 db.tutorials = require("./tutorial.model.js")(mongoose);
 db.indirims = require("./indirim.model.js")(mongoose);
-db.yorum = require("./yorum.model.js")(mongoose);
-
+db.yorumlar = require("./yorum.model")(mongoose);
 db.singlefile = require("./singlefile.js")(mongoose);
 db.multiplefile = require("./multiplefile.js")(mongoose);
 

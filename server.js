@@ -43,10 +43,11 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/burclar.routes")(app);
 require("./app/routes/indirim.routers")(app);
- 
+require("./app/routes/yorum.routes")(app);
 
- app.use('/*uploads', express.static(path.join(__dirname, 'uploads')));
- app.use('/*admin',fileRoutes.routes);
+
+ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+ app.use('/admin',fileRoutes.routes);
 
 
 // set port, listen for requests
