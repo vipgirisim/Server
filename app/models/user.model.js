@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
+var schema ;
 const User = mongoose.model(
   "User",
-  new mongoose.Schema({
+   schema = mongoose.Schema({
     username: String,
     email: String,
     password: String,
@@ -32,7 +32,11 @@ const User = mongoose.model(
         ref: "Role"
       }
     ]
-  })
+  }).method("toJSON", function() {
+    const { __v, _id, ...object } = this.toObject();
+    object.id = _id;
+    return object;
+  })  
 );
 
 module.exports = User;

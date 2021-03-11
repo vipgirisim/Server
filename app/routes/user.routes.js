@@ -92,6 +92,22 @@ module.exports = function (app) {
       .catch(err => res.status(400).json('Error: ' + err));
   });
 
+
+  app.route('/api/hepsinisil').delete((req, res) => {
+    User.deleteMany({})
+    .then(data => {
+      res.send({
+        message: `${data.deletedCount} kullanici silindi were deleted successfully!`
+      });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while removing all tutorials."
+      });
+    });
+  });
+
    
 
 
