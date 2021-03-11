@@ -50,9 +50,27 @@ module.exports = function (app) {
   );
 
   app.route("/api/tumusergetir").get((req, res) => {
-    User.find()
+
+   User.find()
       .then(users => res.json(users))
-      .catch(err => res.status(400).json("Error: " + err));
+      .catch(err => res.status(400).json("Error: " + err));  
+  });
+
+  app.route("/api/kullaniciara").get((req, res) => {
+    const username = req.query.username;
+    var condition = username ? { username: { $regex: new RegExp(username), $options: "i" } } : {};
+  
+    User.find(condition)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving tutorials."
+        });
+      });
+
   });
 
 
