@@ -12,6 +12,7 @@ const User = mongoose.model(
     iban:String,
     indirimcodu:String,
     profilresmi:String,
+    profilyazisi:String,
     yorumlar:String,
     yorumsayisi:String,
     onlinedurumu:String,
@@ -21,6 +22,7 @@ const User = mongoose.model(
     canlikahvefaliucreti:String,
     baktigikahvefalisayisi:String,
     falciyetkisi:String,
+    
     email: String,
     password: String,
     roles: [
