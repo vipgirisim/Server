@@ -205,7 +205,7 @@ app.post("/api/admin/modekle", function (req, res) {
             res.status(500).send({ message: err });
             return;
           }
-          role._id = "60298f789540180016ee791b";
+          role._id = "60591e0d99a3944828951a3f";
           user.roles = roles.map(role => role._id);
           user.save(err => {
             if (err) {
@@ -282,7 +282,7 @@ app.post("/api/admin/userekle", function (req, res) {
             res.status(500).send({ message: err });
             return;
           }
-          role._id = "60298f789540180016ee791a";
+          role._id = "60591e0d99a3944828951a3e";
           user.roles = roles.map(role => role._id);
           user.save(err => {
             if (err) {
@@ -360,7 +360,7 @@ app.post("/api/admin/adminekle", function (req, res) {
             res.status(500).send({ message: err });
             return;
           }
-          role._id = "60298f789540180016ee791c";
+          role._id = "60591e0d99a3944828951a40";
           user.roles = roles.map(role => role._id);
           user.save(err => {
             if (err) {
@@ -429,7 +429,7 @@ app.post("/api/admin/falciekle", function (req, res) {
             res.status(500).send({ message: err });
             return;
           }
-          role._id = "60298f789540180016ee791d";
+          role._id = "60591e0d99a3944828951a41";
           user.roles = roles.map(role => role._id);
           user.save(err => {
             if (err) {
@@ -456,6 +456,143 @@ app.post("/api/admin/falciekle", function (req, res) {
           }
 
           res.send({ message: "falci was registered successfully!" });
+        });
+      });
+    }
+  });
+});
+
+app.post("/api/admin/havuzfalciekle", function (req, res) {
+
+  let user = new User({
+    username: req.body.username,
+    profilyazisi: req.body.profilyazisi,
+    email: req.body.email,
+    password:bcrypt.hashSync(req.body.password, 8),
+    phone:req.body.phone,
+    iban: req.body.iban,
+    FalciRutbesi: req.body.FalciRutbesi, 
+    yediYirmidort: req.body.yediYirmidort,
+    falcirutbe:req.body.Falciyetkisi,
+    kazandigiKar: req.body.kazandigiKar,
+    yaziliFalFiyat: req.body.yaziliFalFiyat,
+    canlifalFiyati: req.body.canlifalFiyati,
+    KahveFaliSayisi: req.body.KahveFaliSayisi,
+ 
+  });
+
+
+  user.save(function (err) {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    if (req.body.roles) {
+      Role.find(
+        {
+          name: { $in: req.body.roles }
+        },
+        (err, roles) => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+          role._id = "60591e0d99a3944828951a42";
+          user.roles = roles.map(role => role._id);
+          user.save(err => {
+            if (err) {
+              res.status(500).send({ message: err });
+              return;
+            }
+
+            res.send({ message: "havuzfalcisi was registered successfully!" });
+          });
+        }
+      );
+    } else {
+      Role.findOne({ name: "havuzfalcisi" }, (err, role) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+
+        user.roles = [role._id];
+        user.save(err => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+
+          res.send({ message: "havuzfalcisi was registered successfully!" });
+        });
+      });
+    }
+  });
+});
+app.post("/api/admin/Yoneticifalciekle", function (req, res) {
+
+  let user = new User({
+    username: req.body.username,
+    profilyazisi: req.body.profilyazisi,
+    email: req.body.email,
+    password:bcrypt.hashSync(req.body.password, 8),
+    phone:req.body.phone,
+    iban: req.body.iban,
+    FalciRutbesi: req.body.FalciRutbesi, 
+    yediYirmidort: req.body.yediYirmidort,
+    falcirutbe:req.body.Falciyetkisi,
+    kazandigiKar: req.body.kazandigiKar,
+    yaziliFalFiyat: req.body.yaziliFalFiyat,
+    canlifalFiyati: req.body.canlifalFiyati,
+    KahveFaliSayisi: req.body.KahveFaliSayisi,
+ 
+  });
+
+
+  user.save(function (err) {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    if (req.body.roles) {
+      Role.find(
+        {
+          name: { $in: req.body.roles }
+        },
+        (err, roles) => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+          role._id = "60591e0d99a3944828951a43";
+          user.roles = roles.map(role => role._id);
+          user.save(err => {
+            if (err) {
+              res.status(500).send({ message: err });
+              return;
+            }
+
+            res.send({ message: "falci was registered successfully!" });
+          });
+        }
+      );
+    } else {
+      Role.findOne({ name: "yoneticifalci" }, (err, role) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+
+        user.roles = [role._id];
+        user.save(err => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+
+          res.send({ message: "yoneticifalci was registered successfully!" });
         });
       });
     }
