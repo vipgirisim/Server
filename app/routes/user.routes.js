@@ -602,7 +602,7 @@ app.post("/api/admin/Yoneticifalciekle", function (req, res) {
 
 app.route("/api/adminrolesgetir").get((req, res) => {
 
-  User.find({ roles: "60298f789540180016ee791c" })
+  User.find({ roles: "60591e0d99a3944828951a40" })
     .then(users => res.json(
 
       users
@@ -613,7 +613,7 @@ app.route("/api/adminrolesgetir").get((req, res) => {
 
 app.route("/api/userrolesgetir").get((req, res) => {
 
-  User.find({ roles: "60298f789540180016ee791a" })
+  User.find({ roles: "60591e0d99a3944828951a3e" })
     .then(users => res.json(
 
       users
@@ -624,7 +624,7 @@ app.route("/api/userrolesgetir").get((req, res) => {
 
 app.route("/api/modrolesgetir").get((req, res) => {
 
-  User.find({ roles: "60298f789540180016ee791b" })
+  User.find({ roles: "60591e0d99a3944828951a3f" })
     .then(users => res.json(
 
       users
@@ -635,7 +635,7 @@ app.route("/api/modrolesgetir").get((req, res) => {
 
 app.route("/api/falcirolesgetir").get((req, res) => {
 
-  User.find({ roles: "60298f789540180016ee791d" })
+  User.find({ roles: "60591e0d99a3944828951a41" })
     .then(users => res.json(
 
       users
@@ -643,6 +643,30 @@ app.route("/api/falcirolesgetir").get((req, res) => {
     ))
     .catch(err => res.status(400).json("Error: " + err));
 });
+
+app.route("/api/havuzfalcirolesgetir").get((req, res) => {
+
+  User.find({ roles: "60591e0d99a3944828951a42" })
+    .then(users => res.json(
+
+      users
+
+    ))
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
+app.route("/api/yoneticifalcirolesgetir").get((req, res) => {
+
+  User.find({ roles: "60591e0d99a3944828951a43" })
+    .then(users => res.json(
+
+      users
+
+    ))
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
+
 
  
 
