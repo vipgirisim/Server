@@ -79,7 +79,7 @@ module.exports = function (app) {
     User.findById(req.params.id)
       .then(users => res.json(
 
-        users.username
+        users
 
       ))
       .catch(err => res.status(400).json("Error: " + err));
