@@ -7,7 +7,8 @@ module.exports = mongoose => {
       email: String,
       yorumyapan: String,
       yorum: String,
-      yorumyapilankullanici: String
+      yorumyapilankullanici: String,
+      yorumacevap: String
     },
     { timestamps: true }
   );

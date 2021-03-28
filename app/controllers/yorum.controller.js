@@ -13,7 +13,8 @@ const Yorumlar = db.yorumlar;
     email: req.body.email,
     yorumyapan: req.body.yorumyapan,
     yorum: req.body.yorum,
-    yorumyapilankullanici: req.body.yorumyapilankullanici
+    yorumyapilankullanici: req.body.yorumyapilankullanici,
+    yorumacevap:req.body.yorumacevap
    });
 
    yorumlar
