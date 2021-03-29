@@ -15,7 +15,8 @@ const Yorumlar = db.yorumlar;
     yorum: req.body.yorum,
     yorumyapilankullanici: req.body.yorumyapilankullanici,
     yorumacevap:req.body.yorumacevap,
-    fakeyorumacevap:req.body.fakeyorumacevap
+    fakeyorumacevap:req.body.fakeyorumacevap,
+    yorumonay:req.body.yorumonay
    });
 
    yorumlar

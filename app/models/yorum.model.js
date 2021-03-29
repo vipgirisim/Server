@@ -9,7 +9,8 @@ module.exports = mongoose => {
       yorum: String,
       yorumyapilankullanici: String,
       yorumacevap: String,
-      fakeyorumacevap: String
+      fakeyorumacevap: String,
+      yorumonay:Boolean
 
     },
     { timestamps: true }
