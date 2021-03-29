@@ -8,7 +8,9 @@ module.exports = mongoose => {
       yorumyapan: String,
       yorum: String,
       yorumyapilankullanici: String,
-      yorumacevap: String
+      yorumacevap: String,
+      fakeyorumacevap: String
+
     },
     { timestamps: true }
   );
