@@ -137,7 +137,8 @@ module.exports = function (app) {
       yaziliFalFiyat: req.body.yaziliFalFiyat,
       canlifalFiyati: req.body.canlifalFiyati,
       FalciRutbesi: req.body.FalciRutbesi,
-      KahveFaliSayisi: req.body.KahveFaliSayisi
+      KahveFaliSayisi: req.body.KahveFaliSayisi,
+      Falcionay:req.body.Falcionay
     },
     { new: true }
   ).select('-__v')

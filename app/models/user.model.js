@@ -27,6 +27,7 @@ const User = mongoose.model(
     canlifalFiyati:String,
     FalciRutbesi:String,
     KahveFaliSayisi:String,
+    Falcionay:Boolean,
     roles: [
       {
         type: mongoose.Schema.Types.ObjectId,
